@@ -43,7 +43,7 @@ class User {
             )
           : null; // Handle user not found
       }
-      static async createBook(newBookData) {
+      static async createUser(newUserData) {
           const connection = await sql.connect(dbConfig);
       
           const sqlQuery = `INSERT INTO Users (username, email) VALUES (@username, @email); SELECT SCOPE_IDENTITY() AS id;`; // Retrieve ID of inserted record
@@ -60,7 +60,7 @@ class User {
           return this.getUserById(result.recordset[0].id);
         }
   
-        static async updateUser(id, newBookData) {
+        static async updateUser(id, newUserData) {
           const connection = await sql.connect(dbConfig);
       
           const sqlQuery = `UPDATE Users SET username = @username, email = @email WHERE id = @id`; // Parameterized query
@@ -77,7 +77,7 @@ class User {
           return this.getUserById(id); // returning the updated user data
         }
       
-        static async deleteBook(id) {
+        static async deleteUser(id) {
           const connection = await sql.connect(dbConfig);
       
           const sqlQuery = `DELETE FROM Users WHERE id = @id`; // Parameterized query
