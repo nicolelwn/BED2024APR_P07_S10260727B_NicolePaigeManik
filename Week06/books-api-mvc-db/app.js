@@ -25,6 +25,7 @@ app.get("/users", usersController.getAllUsers); // Get all users
 app.get("/users/:id", usersController.getUserById); // Get user by ID
 app.put("/users/:id", usersController.updateUser); // Update user
 app.delete("/users/:id", usersController.deleteUser); // Delete user
+app.get("/users/with-books", usersController.getUsersWithBooks);
 
 app.listen(port, async () => {
   try {
@@ -48,5 +49,3 @@ process.on("SIGINT", async () => {
   console.log("Database connection closed");
   process.exit(0); // Exit with code 0 indicating successful shutdown
 });
-
-module.exports = router;

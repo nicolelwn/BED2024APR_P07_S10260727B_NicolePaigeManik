@@ -77,6 +77,16 @@ const getAllUsers = async (req, res) => {
           console.error(error);
           res.status(500).json({ message: "Error searching users" });
         }
+    }
+
+      async function getUsersWithBooks(req, res) {
+        try {
+          const users = await User.getUsersWithBooks();
+          res.json(users);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: "Error fetching users with books" });
+        }
       }
     
     module.exports = {
@@ -86,4 +96,5 @@ const getAllUsers = async (req, res) => {
       updateUser,
       deleteUser,
       searchUsers,
+      getUsersWithBooks,
     };
